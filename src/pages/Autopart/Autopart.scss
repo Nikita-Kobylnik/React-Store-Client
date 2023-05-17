@@ -1,0 +1,16 @@
+.autopart {
+  padding-top: 120px;
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  &__name {
+    font-size: 30px;
+  }
+}

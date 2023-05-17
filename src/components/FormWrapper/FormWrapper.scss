@@ -1,0 +1,18 @@
+.form__btn {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #985ace;
+  border-radius: 7px;
+  border: 0;
+  padding: 12px 0;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  font-family: inherit;
+  &:hover {
+    background-color: #9543dc;
+  }
+}

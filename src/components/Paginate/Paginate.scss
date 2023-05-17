@@ -1,0 +1,25 @@
+.paginate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  gap: 10px;
+  &__list {
+    display: flex;
+    list-style: none;
+    border: 1px solid #919191;
+    border-radius: 5px;
+  }
+  &__item {
+    background-color: #985ace;
+    &:not(:first-child) {
+      border-left: 1px solid #919191;
+    }
+  }
+  &__link {
+    display: flex;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+  }
+}
