@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import { $api } from "../../api/api";
 import { useAppDispatch } from "../../redux/hooks/typedHooks";
 import { setUser } from "../../redux/slices/userSlice";
+import { getTotals, setCart } from "../../redux/slices/cartSlice";
 
-type Props = {};
-
-const AuthProvider = (props: Props) => {
+const AuthProvider: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const getUser = async () => {
@@ -18,8 +17,18 @@ const AuthProvider = (props: Props) => {
   };
 
   useEffect(() => {
+    const cartItems = localStorage.getItem("cart");
+    if (cartItems) {
+      const jsonCartItems = JSON.parse(cartItems);
+      dispatch(setCart(jsonCartItems));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
     getUser();
   }, []);
+
+  // dispatch(getTotals());
 
   return null;
 };

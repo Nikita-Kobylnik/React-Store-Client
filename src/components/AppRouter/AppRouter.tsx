@@ -7,6 +7,7 @@ import Subcategory from "../../pages/Subcategory/Subcategory";
 import Autopart from "../../pages/Autopart/Autopart";
 import Account from "../../pages/Account/Account";
 import AutopartList from "../AutopartList/AutopartList";
+import Cart from "../../pages/Cart/Cart";
 
 function AppRouter() {
   return (
@@ -18,6 +19,7 @@ function AppRouter() {
       <Route path="/subcategory/:id" element={<Subcategory />} />
       <Route path="/autopart/:id" element={<Autopart />} />
       <Route path="/account/edit" element={<Account />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 }

@@ -2,8 +2,9 @@ import React from "react";
 import { IAutopart } from "../../interfaces/autopartInterface";
 import "./AutopartItem.scss";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../redux/hooks/typedHooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/typedHooks";
 import { selectUserSlice } from "../../redux/slices/userSlice";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 type TypeAutopartItem = {
   item: IAutopart;
@@ -11,15 +12,16 @@ type TypeAutopartItem = {
 
 const AutopartItem: React.FC<TypeAutopartItem> = ({ item }) => {
   const { user } = useAppSelector(selectUserSlice);
+  const dispatch = useAppDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart(item));
+  };
 
   return (
     <li className="autopart-list__item card-item">
       <article className="card">
         <div className="card__img">
-          <img
-            src={"https://dummyimage.com/300x400/000/fff.jpg&text=Autopart"}
-            alt=""
-          />
+          <img src={item.image_path} alt="" />
         </div>
         <div className="card__info">
           <p className="card__manufacturer">{item.manufacturer.name}</p>
@@ -31,7 +33,11 @@ const AutopartItem: React.FC<TypeAutopartItem> = ({ item }) => {
             <p className="card__price">
               {item.price} <span>грн</span>
             </p>
-            {user ? <button className="card__add-cart">В корзину</button> : ""}
+            {user && (
+              <button onClick={handleAddToCart} className="card__add-cart">
+                В корзину
+              </button>
+            )}
           </div>
         </div>
       </article>

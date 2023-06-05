@@ -14,6 +14,7 @@ import { BsGrid } from "react-icons/bs";
 import { $api } from "../../api/api";
 import { IMainCategory } from "../../interfaces/mainCategoryInterface";
 import { ISubcategory } from "../../interfaces/subcategoryInterface";
+import { getTotals, selectCartSlice } from "../../redux/slices/cartSlice";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -30,6 +31,8 @@ const Header: React.FC = () => {
   };
 
   const { user } = useAppSelector(selectUserSlice);
+  const cart = useAppSelector(selectCartSlice);
+  const { totalQuantity } = useAppSelector((state) => state.cart);
   const [categories, setCategories] = useState<IMainCategory[]>([]);
 
   useEffect(() => {
@@ -43,6 +46,12 @@ const Header: React.FC = () => {
     };
     fetchCategories();
   }, []);
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
+
+  const cartItems = useAppSelector(selectCartSlice);
 
   return (
     <header className="header">
@@ -102,9 +111,10 @@ const Header: React.FC = () => {
           </div>
 
           <div className="header__nav">
-            <Link to="/cart" className="cart">
+            <Link to={user ? "/cart" : "/login"} className="cart">
               <BsCart className="cart__icon" />
-              <p>Корзина</p>
+              <p className="cart-text">Корзина</p>
+              {user && <span className="cart-count">{totalQuantity}</span>}
             </Link>
 
             {user ? (
