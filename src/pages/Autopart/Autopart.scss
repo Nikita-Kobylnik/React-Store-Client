@@ -1,11 +1,16 @@
 .autopart {
-  padding-top: 120px;
+  padding-top: 180px;
+  padding-bottom: 60px;
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   &__left {
+    flex-basis: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img {
       max-width: 100%;
     }
@@ -13,9 +18,33 @@
   &__right {
     display: flex;
     flex-direction: column;
+    flex-basis: 40%;
     gap: 30px;
   }
   &__name {
     font-size: 30px;
   }
+
+  &__price {
+    font-size: 30px;
+    span {
+      font-size: 20px;
+    }
+  }
+
+  &__descr {
+    line-height: 30px;
+    span {
+      display: block;
+      margin-top: 10px;
+    }
+  }
+}
+
+.manufacturer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  font-size: 20px;
+  margin-top: 20px;
 }

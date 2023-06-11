@@ -8,6 +8,7 @@ import Autopart from "../../pages/Autopart/Autopart";
 import Account from "../../pages/Account/Account";
 import AutopartList from "../AutopartList/AutopartList";
 import Cart from "../../pages/Cart/Cart";
+import Checkout from "../../pages/Checkout/Checkout";
 
 function AppRouter() {
   return (
@@ -20,6 +21,7 @@ function AppRouter() {
       <Route path="/autopart/:id" element={<Autopart />} />
       <Route path="/account/edit" element={<Account />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/checkout" element={<Checkout />} />
     </Routes>
   );
 }

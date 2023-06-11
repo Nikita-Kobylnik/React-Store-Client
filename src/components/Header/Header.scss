@@ -4,15 +4,39 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 20px 0;
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   &__logo img {
     width: 180px;
   }
+  &__up {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #985ace;
+    color: #fff;
+    font-weight: 600;
+    padding: 15px 0;
+    .icon {
+      font-size: 20px;
+      margin-left: 15px;
+    }
+    .link {
+      display: flex;
+      align-items: center;
+      color: inherit;
+      text-decoration: none;
+      margin-left: 15px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 .header__inner {
+  padding: 20px 0;
+
   display: flex;
   align-items: center;
   justify-content: space-between;

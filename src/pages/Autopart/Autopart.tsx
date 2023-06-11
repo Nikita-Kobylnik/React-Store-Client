@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks/typedHooks";
 import { selectUserSlice } from "../../redux/slices/userSlice";
 import { addToCart } from "../../redux/slices/cartSlice";
 import { BsArrowLeft } from "react-icons/bs";
+import Footer from "../../components/Footer/Footer";
 
 const Autopart: React.FC = () => {
   const [autopart, setAutopart] = useState<IAutopart>();
@@ -35,38 +36,59 @@ const Autopart: React.FC = () => {
   return (
     <>
       <Header />
-      <section className="autopart">
-        <Container>
-          <div className="autopart__inner">
-            <div className="autopart__left">
-              <img src={autopart?.image_path} alt="" />
+      <main className="main">
+        <section className="autopart">
+          <Container>
+            <div className="autopart__inner">
+              <div className="autopart__left">
+                <img src={autopart?.image_path} alt="" />
+              </div>
+              <div className="autopart__right">
+                <p className="autopart__name">{autopart?.name}</p>
+
+                <p className="autopart__price">
+                  <span>Цена:</span> {autopart?.price} <span>грн</span>
+                </p>
+                <p className="autopart__descr">
+                  Описание:
+                  <br />
+                  <span className="">{autopart?.description}</span>
+                </p>
+                <p className="autopart__amount">
+                  В наличии: {autopart?.amount} шт
+                </p>
+                {user && (
+                  <button onClick={handleAddToCart} className="card__add-cart">
+                    В корзину
+                  </button>
+                )}
+                <Link className="cart-empty__link" to="/">
+                  <BsArrowLeft />
+                  Продолжить покупки
+                </Link>
+              </div>
             </div>
-            <div className="autopart__right">
-              <p className="autopart__name">{autopart?.name}</p>
-              <p className="autopart__manufacturer">
+            <div className="manufacturer">
+              <h3 className="manufacturer__title">О производителе</h3>
+              <p className="manufacturer__name">
                 {autopart?.manufacturer.name}
               </p>
-              <p className="autopart__descr">
-                Описание:
-                {autopart?.description}
+              <p className="manufacturer__address">
+                Главный офис: {autopart?.manufacturer.adress}
               </p>
-              <p className="autopart__price">{autopart?.price} грн</p>
-              <p className="autopart__amount">
-                В наличии: {autopart?.amount} шт
+              <p className="manufacturer__email">
+                Електронная почта:{" "}
+                <a href="/#">{autopart?.manufacturer.email}</a>
               </p>
-              {user && (
-                <button onClick={handleAddToCart} className="card__add-cart">
-                  В корзину
-                </button>
-              )}
-              <Link className="cart-empty__link" to="/">
-                <BsArrowLeft />
-                Продолжить покупки
-              </Link>
+              <p className="manufacturer__phone">
+                Номер телефона: {autopart?.manufacturer.phone}
+              </p>
             </div>
-          </div>
-        </Container>
-      </section>
+          </Container>
+        </section>
+      </main>
+
+      <Footer />
     </>
   );
 };

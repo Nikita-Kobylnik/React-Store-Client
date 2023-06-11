@@ -1,0 +1,29 @@
+.footer {
+  background-color: #985ace;
+  padding: 50px 0;
+  color: #ffffff;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    list-style: none;
+  }
+  .title {
+    color: #ffffff;
+    font-size: 17px;
+  }
+
+  .link {
+    color: inherit;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 5px 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
